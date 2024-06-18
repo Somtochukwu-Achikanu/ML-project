@@ -1,0 +1,123 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/marketing_campaign_responses/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: d7d6be431f4a1b065eb9f84db4e63da6
+      size: 1062
+    - path: src/marketing_campaign_responses/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 056590fce1ff1305577a2c2f3c36b65e
+      size: 879
+    outs:
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: 3848ea3a94a80c0b81247cab7a3af8a8
+      size: 784
+  data_validation:
+    cmd: python src/marketing_campaign_responses/pipeline/stage_02_data_validation.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: d7d6be431f4a1b065eb9f84db4e63da6
+      size: 1062
+    - path: src/marketing_campaign_responses/pipeline/stage_02_data_validation.py
+      hash: md5
+      md5: b4501bd549a93e20bc53faa0fd81d311
+      size: 857
+    outs:
+    - path: artifacts/data_validation
+      hash: md5
+      md5: 0ccb3ea5849272ff03be5ab71786b9ff.dir
+      size: 23
+      nfiles: 1
+  data_transformation:
+    cmd: python src/marketing_campaign_responses/pipeline/stage_03_data_transformation.py
+    deps:
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: 3848ea3a94a80c0b81247cab7a3af8a8
+      size: 784
+    - path: config/config.yaml
+      hash: md5
+      md5: d7d6be431f4a1b065eb9f84db4e63da6
+      size: 1062
+    - path: src/marketing_campaign_responses/pipeline/stage_03_data_transformation.py
+      hash: md5
+      md5: 0b6b79846a080cba79232c4320f65c8d
+      size: 999
+    outs:
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: d27352242f4f4bca1cbfd7587054d2a9
+      size: 4099
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 9f0d1b73751eb0df37b5a8e1d40f245f
+      size: 1164
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 5d212060754aee883e15cd970ab8ee26
+      size: 4049
+  training:
+    cmd: python src/marketing_campaign_responses/pipeline/stage_04_model_trainer.py
+    deps:
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: 3848ea3a94a80c0b81247cab7a3af8a8
+      size: 784
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: d27352242f4f4bca1cbfd7587054d2a9
+      size: 4099
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 9f0d1b73751eb0df37b5a8e1d40f245f
+      size: 1164
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 5d212060754aee883e15cd970ab8ee26
+      size: 4049
+    - path: config/config.yaml
+      hash: md5
+      md5: d7d6be431f4a1b065eb9f84db4e63da6
+      size: 1062
+    - path: src/marketing_campaign_responses/pipeline/stage_04_model_trainer.py
+      hash: md5
+      md5: 4d2693108f3d70d6f802bea53f6f3151
+      size: 820
+    outs:
+    - path: artifacts/model_trainer/model.joblib
+      hash: md5
+      md5: d6a704df4180f366b9482c397fc0a074
+      size: 158201
+  evaluation:
+    cmd: python src/marketing_campaign_responses/pipeline/stage_05_model_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: 3848ea3a94a80c0b81247cab7a3af8a8
+      size: 784
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: d27352242f4f4bca1cbfd7587054d2a9
+      size: 4099
+    - path: artifacts/model_trainer/model.joblib
+      hash: md5
+      md5: d6a704df4180f366b9482c397fc0a074
+      size: 158201
+    - path: config/config.yaml
+      hash: md5
+      md5: d7d6be431f4a1b065eb9f84db4e63da6
+      size: 1062
+    - path: src/marketing_campaign_responses/pipeline/stage_05_model_evaluation.py
+      hash: md5
+      md5: de1c36efa8a3ed4e94b56f5abeb7a9a0
+      size: 908
+    outs:
+    - path: artifacts/model_evaluation/metrics.json
+      hash: md5
+      md5: d6f0f9ed99837be9ea4d5c77e65009e5
+      size: 50

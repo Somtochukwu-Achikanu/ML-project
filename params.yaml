@@ -1,1 +1,6 @@
-Key: value
+
+ExtraTreesClassifier:
+  n_estimators: 200
+  max_depth: 20
+  max_leaf_nodes: 50
+  criterion: 'gini'

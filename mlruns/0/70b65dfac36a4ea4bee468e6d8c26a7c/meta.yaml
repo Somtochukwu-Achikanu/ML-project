@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/somtoachi-kanu/End%20to%20End%20Folder/ML-project/mlruns/0/70b65dfac36a4ea4bee468e6d8c26a7c/artifacts
+end_time: 1718723247164
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 70b65dfac36a4ea4bee468e6d8c26a7c
+run_name: ambitious-cow-175
+run_uuid: 70b65dfac36a4ea4bee468e6d8c26a7c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718723244430
+status: 3
+tags: []
+user_id: somtoachi-kanu

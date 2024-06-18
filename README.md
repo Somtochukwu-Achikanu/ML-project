@@ -40,12 +40,20 @@ The dataset can be downloaded from [This Link]https://www.kaggle.com/datasets/su
 ## Run the following commands
 ```bash init_setup.sh```
 
+## Run the following commands
+python main.py
+
+## Run the Dvc Command
+```dvc.init```
+```dvc.repro```
+
 
 
 ## Feature Engineering
 We perform feature engineering to enhance the predictive power of our models:
 
 * Encoding categorical variables
+* Scaling Numerical features
 
 
 
@@ -55,6 +63,7 @@ The project uses several machine learning algorithms to build predictive models,
 * K Nearest neighbors
 * Gradient Boosting
 * Support Vector Machines (SVM)
+* Decision Trees
 
 
 

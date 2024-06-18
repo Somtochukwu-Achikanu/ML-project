@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/somtoachi-kanu/End%20to%20End%20Folder/ML-project/mlruns/0/2c50099a2ae544aead9f2de2d207a676/artifacts
+end_time: 1718723488696
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2c50099a2ae544aead9f2de2d207a676
+run_name: clumsy-perch-483
+run_uuid: 2c50099a2ae544aead9f2de2d207a676
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1718723486041
+status: 3
+tags: []
+user_id: somtoachi-kanu
